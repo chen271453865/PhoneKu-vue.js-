@@ -1,7 +1,7 @@
 <template>
   <div>
       <ul class="hotQueryList">
-      <li v-for ="item in flowers" :key="item.CnName">
+      <li v-for ="(item,index) in flowers" :key="item.CnName" v-on:click="hot(index)">
         <div><img :src="item.EnName" alt="flowers"></div>
         <div>{{item.NowPrice}}</div>
         <div>{{item.HightestPrice}}</div>
@@ -18,11 +18,8 @@
     };
   },
    created() {
-    //   alert("ssssss");
-
 this.$fetch('/hotQueryList')
         .then(response => {
-            console.log( response );
             if(response.success == true ) {
               this.flowers = response.data.projects.map(item => {
                   var img = null;
@@ -32,7 +29,6 @@ this.$fetch('/hotQueryList')
                   } catch (err) {
                     img = require('../../assets/imgs/btc.png');
                   }
-
                   return {
                     CnName: item.CnName,
                     HightestPrice: item.HightestPrice,
@@ -44,6 +40,21 @@ this.$fetch('/hotQueryList')
             }
         })
 
+  },
+  methods:{
+    hot:function( index ){
+      this.$store.commit('CnName',this.flowers[index].CnName);
+      this.$store.commit('nowPrice',this.flowers[index].nowPrice);
+      this.$store.commit('turnover',this.flowers[index].turnover);
+      this.$store.commit('generalCapital',this.flowers[index].generalCapital);
+      this.$store.commit('circulationCapital',this.flowers[index].circulationCapital);
+      this.$store.state.stroe_data.CnName = this.flowers[index].CnName;
+      this.$store.state.stroe_data.nowPrice = this.flowers[index].nowPrice;
+      this.$store.state.stroe_data.turnover = this.flowers[index].turnover;
+      this.$store.state.stroe_data.generalCapital = this.flowers[index].generalCapital;
+      this.$store.state.stroe_data.circulationCapital = this.flowers[index].circulationCapital;
+      this.$router.push({ name: 'Detail'});
+    }
   }
   }
 </script>

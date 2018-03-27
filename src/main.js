@@ -9,6 +9,10 @@ import Mint from 'mint-ui';
 import 'mint-ui/lib/style.css'
 Vue.use(Mint);
 
+// vuex
+import store from '../src/assets/js/store';
+
+
 
 // 调用接口
 import {post,fetch,patch,put} from './assets/js/base.js'
@@ -18,6 +22,11 @@ Vue.prototype.$fetch=fetch;
 Vue.prototype.$patch=patch;
 Vue.prototype.$put=put;
 
+import jquery from 'jquery'
+
+
+import VueHighcharts from 'vue-highcharts';
+import Highcharts from 'highcharts';
 
 
 Vue.config.productionTip = false
@@ -26,6 +35,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  store,//使用store
   components: { App },
   template: '<App/>',
   methods:{

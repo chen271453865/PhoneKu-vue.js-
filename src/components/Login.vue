@@ -30,7 +30,7 @@ data:function(){
 		 var passwordReg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$/;//8到16位数字与字母组合
 		 var datas = {
 			 'phone':this.phone,
-			 'password':this.password
+			 'password':md5(this.password),
 		 }
 		 if( this.phone.length <= 0 || this.password.length <= 0 ){
 			  alert("请输入账号或者密码");
@@ -45,12 +45,10 @@ data:function(){
 			 }else{
 					this.$post('/login',datas).then((response) => {
 					var a = JSON.stringify( response.data );
-					console.log(a);
 					if(response.status==200){
 						this.$router.push({ path: '/index/Hall' });
 					}
 				})
-				//  console.log( md5( this.password ) );
 				 return true;
 			 }
 		 }

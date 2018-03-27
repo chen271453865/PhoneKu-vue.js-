@@ -40,7 +40,6 @@ export default {
   created() {
 this.$fetch('/queryList')
         .then(response => {
-            console.log( response );
             if(response.success == true ) {
               this.flowers = response.data.projects.map(item => {
                   var img = null;
@@ -51,6 +50,10 @@ this.$fetch('/queryList')
                   }
                   return {
                     CnName: item.CnName,
+                    nowPrice:item.nowPrice,
+                    turnover:item.turnover,
+                    generalCapital:item.generalCapital,
+                    circulationCapital:item.circulationCapital,
                     EnName: img
                   }
                 })
@@ -59,9 +62,17 @@ this.$fetch('/queryList')
   },
   methods:{
     onclick:function(index){
-      var params = this.flowers[index];
-      alert(params);
-      this.$router.push({ name: 'Detail',params:{flowers:params} });
+      this.$store.commit('CnName',this.flowers[index].CnName);
+      this.$store.commit('nowPrice',this.flowers[index].nowPrice);
+      this.$store.commit('turnover',this.flowers[index].turnover);
+      this.$store.commit('generalCapital',this.flowers[index].generalCapital);
+      this.$store.commit('circulationCapital',this.flowers[index].circulationCapital);
+      this.$store.state.stroe_data.CnName = this.flowers[index].CnName;
+      this.$store.state.stroe_data.nowPrice = this.flowers[index].nowPrice;
+      this.$store.state.stroe_data.turnover = this.flowers[index].turnover;
+      this.$store.state.stroe_data.generalCapital = this.flowers[index].generalCapital;
+      this.$store.state.stroe_data.circulationCapital = this.flowers[index].circulationCapital;
+      this.$router.push({ name: 'Detail'});
     }
   }
 };

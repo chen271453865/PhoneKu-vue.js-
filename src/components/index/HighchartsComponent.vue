@@ -33,10 +33,9 @@ export default {
 }
 </script>
 
-<style scoped>
-/* .highcharts-container {
+<style>
+  .highcharts-container {
     width: 800px;
     height: 400px;
-  } */
+  }
 </style>
-
