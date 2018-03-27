@@ -3,7 +3,7 @@
       <ul class="hotQueryList">
       <li v-for ="(item,index) in flowers" :key="item.CnName" v-on:click="hot(index)">
         <div><img :src="item.EnName" alt="flowers"></div>
-        <div>{{item.NowPrice}}</div>
+        <div>{{item.nowPrice}}</div>
         <div>{{item.HightestPrice}}</div>
         <div>{{item.LowPrice}}</div>
       </li>
@@ -32,8 +32,11 @@ this.$fetch('/hotQueryList')
                   return {
                     CnName: item.CnName,
                     HightestPrice: item.HightestPrice,
-                    NowPrice: item.NowPrice,
+                    nowPrice: item.nowPrice,
                     LowPrice: item.LowPrice,
+                    turnover:item.turnover,
+                    generalCapital:item.generalCapital,
+                    circulationCapital:item.circulationCapital,
                     EnName: img
                   }
                 })

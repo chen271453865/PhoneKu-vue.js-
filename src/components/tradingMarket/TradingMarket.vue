@@ -19,7 +19,7 @@
         <ul class="hotQueryList">
             <li v-for ="(item,index) in list" class="page-loadmore-listitem" :key="item.CnName" @click="toDetail(index)">
                 <div><img :src="item.EnName" alt="list"></div>
-                <div>{{item.NowPrice}}</div>
+                <div>{{item.nowPrice}}</div>
                 <div>{{item.HightestPrice}}</div>
                 <div>{{item.LowPrice}}</div>
             </li>
@@ -174,7 +174,7 @@ export default {
       //wrapperHeight: 0,
       translate: 0,
       moveTranslate: 0,
-      biaot: "交易市场"
+      biaot: "交易市场",
     };
   },
   components: {
@@ -249,9 +249,12 @@ toDetail:function(index){
           return {
             CnName: item.CnName,
             HightestPrice: item.HightestPrice,
-            NowPrice: item.NowPrice,
+            nowPrice: item.nowPrice,
             LowPrice: item.LowPrice,
-            EnName: img
+            EnName: img,
+            turnover:item.turnover,
+            generalCapital:item.generalCapital,
+            circulationCapital:item.circulationCapital,
           };
         });
       }
