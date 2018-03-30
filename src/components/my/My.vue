@@ -19,21 +19,21 @@
 				</mt-cell>
 			</div>
 			<div class="ulMargin">
-				<mt-cell title="实名认证" is-link>
+				<mt-cell title="实名认证" is-link to="/my/RealName">
 					<img slot="icon" src="../../assets/imgs/btc.png" width="24" height="24">
 				</mt-cell>
-				<mt-cell title="充值" is-link>
+				<mt-cell title="充值" is-link to="/my/Recharge">
 					<img slot="icon" src="../../assets/imgs/btc.png" width="24" height="24">
 				</mt-cell>
-				<mt-cell title="提现" is-link>
+				<mt-cell title="提现" is-link to="/my/Withdrawals">
 					<img slot="icon" src="../../assets/imgs/btc.png" width="24" height="24">
 				</mt-cell>
-				<mt-cell title="修改登陆密码" is-link>
+				<mt-cell title="修改登陆密码" is-link to="/my/ChangeLoginPassword">
 					<img slot="icon" src="../../assets/imgs/btc.png" width="24" height="24">
 				</mt-cell>
 			</div>
 			<div class="ulMargin">
-				<mt-cell title="修改交易密码" is-link>
+				<mt-cell title="修改交易密码" is-link to="/my/ChangeTransitionPassword">
 					<img slot="icon" src="../../assets/imgs/btc.png" width="24" height="24">
 				</mt-cell>
 			</div>
@@ -53,7 +53,12 @@ export default {
   },
   components: {
     Footers
-  }
+  },
+	methods:{
+		realName:function(){
+			alert("ssssss");
+		}
+	}
 };
 </script>
 <style scoped>

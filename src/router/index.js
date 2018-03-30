@@ -19,6 +19,13 @@ import TradingMarket  from '@/components/tradingMarket/tradingMarket'
 import Assets  from '@/components/Assets/Assets'
 // 个人中心
 import My  from '@/components/my/My'
+import RealName  from '@/components/my/RealName'
+import Recharge  from '@/components/my/Recharge'
+import Withdrawals  from '@/components/my/Withdrawals'
+import ChangeLoginPassword  from '@/components/my/ChangeLoginPassword'
+import ChangeTransitionPassword  from '@/components/my/ChangeTransitionPassword'
+
+
 
 
 Vue.use(Router)
@@ -88,13 +95,34 @@ export default new Router({
         component: Assets
     },
     {
-        // 我的
-        // path: '../my/my',
-        // name:'My',
-        // component: My
         path: '/my/My',
         name:'My',
         component: My
+    },
+    {
+        path: '/my/RealName',
+        name:'RealName',
+        component:RealName
+    },
+    {
+        path: '/my/Recharge',
+        name:'Recharge',
+        component:Recharge
+    },
+    {
+        path: '/my/Withdrawals',
+        name:'Withdrawals',
+        component:Withdrawals
+    },
+    {
+        path: '/my/ChangeLoginPassword',
+        name:'ChangeLoginPassword',
+        component:ChangeLoginPassword
+    },
+    {
+        path: '/my/ChangeTransitionPassword',
+        name:'ChangeTransitionPassword',
+        component:ChangeTransitionPassword
     },
     {
         path: '/public',
