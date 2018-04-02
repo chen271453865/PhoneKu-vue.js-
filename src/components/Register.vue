@@ -14,9 +14,10 @@
 	</div>
 </template>
 <script>
-import {setCookie,getCookie} from '../assets/js/cookie.js'
+import {setCookie} from '../assets/js/cookie.js'
 import {checkMobile} from '../assets/js/base.js'
 import md5 from 'js-md5';
+import { Toast } from 'mint-ui';
 export default {
 data:function(){
 	return{
@@ -83,13 +84,16 @@ data:function(){
              }else{
                 this.$post('/login',datas).then((response) => {
                         var a = JSON.stringify( response.data );
-                        console.log(a);
                         if(response.status==200){
-                            alert("注册成功");
+                            Toast({
+                                message: '提示',
+                                position: 'bottom',
+                                duration: 5000
+                            });
+                            setCookie(this.phone,this.password);
                             this.$router.push({ path: '/' });
                         }
                     })
-				//  console.log( md5( this.password ) );
 				 return true;
              }
          }

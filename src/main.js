@@ -39,7 +39,6 @@ new Vue({
   components: { App },
   template: '<App/>',
   methods:{
- 
     moreChart() {
         var options = this.getMoreOptions(this.type);
  
@@ -51,3 +50,28 @@ new Vue({
     }
   }
 })
+// main.js
+// router.beforeEach((to, from, next) => {
+//   console.log((to, from, next)  );
+//   // return false;
+//   if (to.path === '/' && localStorage.getItem('tooken') && from.path !== '/login'){
+//     localStorage.removeItem('tooken')
+//     next()
+//   }
+//   else if (to.meta.requiresAuth && !localStorage.getItem('tooken')){
+//     next(
+//       {
+//         path: '/',
+//         query: {redirect: to.fullPath}
+//       }
+//     )
+//   }
+//   else if (from.path === '/Login' && to.path === '/index/Hall'){
+//     next({
+//       path: '/index/Hall'
+//     })
+//   }
+//   else{
+//     next()
+//   }
+// })

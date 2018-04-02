@@ -1,10 +1,11 @@
 /*用export把方法暴露出来*/
 /*设置cookie*/
-export function setCookie(c_name,value,expire) {
+import md5 from 'js-md5';
+export function setCookie(c_name,value) {
     var date=new Date()
-    date.setSeconds(date.getSeconds()+expire)
-    document.cookie=c_name+ "="+escape(value)+"; expires="+date.toGMTString()
-    console.log(document.cookie)
+    date.setSeconds(date.getSeconds())
+    var cookie=md5(c_name+value+date.getSeconds());
+    console.log(cookie);
 }
 
 /*获取cookie*/

@@ -1,6 +1,7 @@
 export default {
     state: {
         count: 1,
+        tooken:localStorage.getItem('tooken'),
         CnName:localStorage.getItem('newName'), //中文名
         nowPrice:localStorage.getItem('newPrice'),//股票当前价格
         turnover:localStorage.getItem('newTurnover'),//成交额
@@ -43,15 +44,21 @@ export default {
         checkSum (state,buySum) {
           // 变更状态
           var s = this.state.stroe_data.mkSum - buySum;
-          alert( s );
           localStorage.setItem('newbuySum',s);
           this.state.stroe_data.mkSum = localStorage.getItem('newbuySum');
         },
         selectChange (state,select) {
           // 变更状态
-          
           state.selected = select;
           localStorage.setItem('newSelected',select);
         },
+        login (state, data) {
+          state.tooken = data
+          localStorage.setItem('tooken',data);
+          // sessionStorage.setItem('tooken', data)
+        },
+        loginOut (state, data) {
+          state.tooken = null
+        }
       }
 }

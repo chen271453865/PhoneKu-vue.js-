@@ -38,6 +38,8 @@ export default {
     Footers
   },
   created() {
+    console.log( localStorage.getItem('tooken') );
+    return false
 this.$fetch('/queryList')
         .then(response => {
             if(response.success == true ) {

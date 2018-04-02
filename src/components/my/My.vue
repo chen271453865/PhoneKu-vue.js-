@@ -37,6 +37,11 @@
 					<img slot="icon" src="../../assets/imgs/btc.png" width="24" height="24">
 				</mt-cell>
 			</div>
+			<div class="ulMargin">
+				<mt-cell title="退出" is-link to="/my/LoginOut">
+					<img slot="icon" src="../../assets/imgs/btc.png" width="24" height="24">
+				</mt-cell>
+			</div>
         </div>
         <footers></footers>
   </div>

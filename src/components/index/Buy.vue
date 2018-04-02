@@ -57,7 +57,7 @@
                         </div>
                         <div class="mint-cell-value">
                             <span style="margin-right: 5px;">
-                                <input type="number" v-model="max" class="height30" >
+                                <input type="number" v-model="max" class="height30" placeholder="请输入购买量">
                             </span>
                             <small class="blue">{{maxbuy}}(个)</small>
                         </div>
@@ -111,17 +111,22 @@ import md5 from 'js-md5';
                     alert("交易密码不能为空");
                     return false;
                     }else{
-                        console.log( md5(value) );
-                        var datas = {
-                            'mkSum':this.$store.state.stroe_data.mkSum,
-                            'buyPrice':(this.$store.state.stroe_data.nowPrice),
-                            'max':this.max,
-                            'transitionPassword':md5(value)
-                        }
-                        this.$post('/transactionPassword',datas).then((response) => {
+                        var transitionPassword = md5(value);
+                        this.$post('/transactionPassword',transitionPassword).then((response) => {
                             if( response.status===200 && response.data.status == 'success'){
+                                var datas = {
+                                    'mkSum':this.$store.state.stroe_data.mkSum,
+                                    'buyPrice':(this.$store.state.stroe_data.nowPrice),
+                                    'max':this.max,
+                                }
                             var buySum = (this.buyPrice)*(this.max);
-                            alert( buySum );
+                           this.$post('/transition',datas).then((response) => {
+                                var a = JSON.stringify( response.data );
+                                if(response.status==200 && a.status == true){
+                                    MessageBox('提示', '购买成功');
+                                    this.$router.push({ path: '/index/Hall' });
+                                }
+                            })
                             // return false;
                                 // this.$store.state.stroe_data.mkSum =  this.maxbuy*this.$store.state.stroe_data.nowPrice
                                 this.$store.commit('checkSum',buySum);

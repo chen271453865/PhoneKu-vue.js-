@@ -1,7 +1,7 @@
 <template>
   <div>
        <mt-header :title="biaot" :fixed='true'>
-            <router-link to="/index/Hall" slot="left">
+            <router-link to="/my/My" slot="left">
                 <mt-button icon="back">返回</mt-button>
             </router-link>
         </mt-header>

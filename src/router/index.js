@@ -24,6 +24,7 @@ import Recharge  from '@/components/my/Recharge'
 import Withdrawals  from '@/components/my/Withdrawals'
 import ChangeLoginPassword  from '@/components/my/ChangeLoginPassword'
 import ChangeTransitionPassword  from '@/components/my/ChangeTransitionPassword'
+import LoginOut  from '@/components/my/LoginOut'
 
 
 
@@ -42,7 +43,10 @@ export default new Router({
     },
     {
         path: '/index/Hall',
-        component: Hall
+        meta: {
+            requireAuth: true,  // 添加该字段，表示进入这个路由是需要登录的
+        },
+        component: Hall,
     },
     {
         path: '/Swipe',
@@ -123,6 +127,11 @@ export default new Router({
         path: '/my/ChangeTransitionPassword',
         name:'ChangeTransitionPassword',
         component:ChangeTransitionPassword
+    },
+    {
+        path: '/my/LoginOut',
+        name:'LoginOut',
+        component:LoginOut
     },
     {
         path: '/public',

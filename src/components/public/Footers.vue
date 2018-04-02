@@ -30,22 +30,22 @@ export default {
     selected: function(val,oldVal) {
 		 this.selected = val;
       if (val == "首页") {
-		this.$router.push({ path: "/index/Hall" });
-		this.$store.commit('selectChange',"首页");
-		this.selected = this.$store.state.stroe_data.selected;
+			this.$router.push({ path: "/index/Hall" });
+			this.$store.commit('selectChange',"首页");
+			this.selected = this.$store.state.stroe_data.selected;
       }
       if (val == "交易市场") {
-		this.$router.push({ path: "/tradingMarket/tradingMarket" });
-		// this.selected = "交易市场";
-		this.$store.commit('selectChange',"交易市场");
+			this.$router.push({ path: "/tradingMarket/tradingMarket" });
+			// this.selected = "交易市场";
+			this.$store.commit('selectChange',"交易市场");
       }
       if (val == "资产") {
-		this.$router.push({ path: "/assets/assets" });
-		this.$store.commit('selectChange',"资产");
+			this.$router.push({ path: "/assets/assets" });
+			this.$store.commit('selectChange',"资产");
       }
       if (val == "我的") {
-		this.$router.push({ path: "/my/My" });
-		this.$store.commit('selectChange',"我的");
+			this.$router.push({ path: "/my/My" });
+			this.$store.commit('selectChange',"我的");
       }
     }
   }
